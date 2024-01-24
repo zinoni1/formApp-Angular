@@ -1,10 +1,18 @@
-<h2>Reactivos: Tablas</h2>
+<h2>Tablas</h2>
 <hr>
 <div class="card">
-    <p-table [value]="products" (sortFunction)="customSort($event)" [customSort]="true" [tableStyle]="{'min-width': '40rem'}">
+    <p-table [value]="Products" (sortFunction)="customSort($event)" [customSort]="true" [tableStyle]="{'min-width': '45rem'}"  #dt2
+        dataKey="id" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" 
+       [loading]="loading" [globalFilterFields]="['name', 'category', 'quantity', 'price','code']" [tableStyle]="{ 'min-width': '45rem' }">
         <ng-template pTemplate="caption">
-            <div class="flex align-items-center justify-content-between m-2">
+            <div class="flex align-items-center justify-content-between m-4">
                 <h3>Productos</h3>
+                 <div class="flex">
+                <span class="p-input-icon-left ml-10" >
+                    <i class="pi pi-search m-2"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal(($any($event.target)).value, 'contains')" placeholder="Buscar nombre" />
+                </span>
+            </div>
             </div>
             <hr>
         </ng-template>
@@ -19,13 +27,13 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>
-            <tr>
+            <tr (click)="navigateToDetailPage(product)">
                 <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
                 <td>{{product.code}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.category}}</td>
                 <td>{{product.quantity}}</td>
-                <td>{{product.price | currency: 'USD'}}</td>
+                <td>{{product.price | currency: 'EUR'}}</td>
             </tr>
         </ng-template>
     </p-table>

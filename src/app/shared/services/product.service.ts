@@ -1220,4 +1220,7 @@ export class ProductService {
     getProductsWithOrders() {
         return Promise.resolve(this.getProductsWithOrdersData());
     }
+    getProductById(id: string) {
+        return Promise.resolve(this.getProductsData().find(product => product.id === id));
+    }
 };

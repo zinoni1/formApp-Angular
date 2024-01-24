@@ -1,0 +1,30 @@
+<h2 class="page-title">Detalles del Producto: <h1>{{product.name}}</h1></h2>
+
+<div *ngIf="product" class="product-details-container">
+    <div class="product-info">
+        <hr>
+        <table>
+            <tr>
+                <td><strong>Código:</strong> </td>
+                <td><strong>Categoría:</strong> </td>
+                <td><strong>Cantidad:</strong> </td>
+                <td class="pl-3"><strong>Precio:</strong> </td>
+                <td class="pl-3"><strong>Valoración:</strong> </td>
+                <td class="pl-3"><strong>Inventario:</strong></td>
+                <td class="pl-3"><strong>Descripción:</strong> </td>
+            </tr>
+            <tr >
+              <td class="pr-2">{{ product.code }}</td>
+              <td class="pr-2">{{ product.category }}</td>
+              <td class="pr-2 pl-5">{{ product.quantity }}</td>
+              <td class="pl-3"> {{ product.price | currency: 'EUR' }}</td>
+              <td class="pl-6"> {{ product.rating }}</td>
+              <td class="pl-3">{{product.inventoryStatus}}</td>
+              <td class="pl-3"> {{ product.description }}</td>
+          </tr>
+        </table>
+    </div>
+</div>
+<div class="product-image ml-8 mt-3">
+  <img  [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="500" class="shadow-6" style="border-radius: 20px;" />
+</div>
